@@ -17,7 +17,7 @@ I have included a batch file to help the transition of connecting most common ad
  ## 
   
 ``v4.4.3 - 2025-10-19:``
-**Important**: This update requires updated addons for them to function properly. I have converted ImpEGamer's and Emmote's to function with the new version and they can be found at [https://github.com/antilectual/IC_Addons_1/](https://github.com/antilectual/IC_Addons_1) (for ImpEGamer's like Levelup) and [https://github.com/Emmote/IC_Addons](https://github.com/Emmote/IC_Addons) for Emmote's (until I complete a pull request).
+**Important**: This update requires updated addons for them to function properly. I have converted ImpEGamer's and Emmote's to function with the new version and they can be found at [https://github.com/antilectual/IC_Addons_1/](https://github.com/antilectual/IC_Addons_1) (for ImpEGamer's like Levelup) and [https://github.com/Emmotes/IC_Addons](https://github.com/Emmotes/IC_Addons) for Emmote's (until I complete a pull request).
 
 ##
 2025-08-02:  
@@ -99,6 +99,7 @@ You can open Readme.md (this file) in any Markdown editor on Windows that has a 
 2. Open Readme.md
 3. Press `Control+Shift+V` or right click on the file tab and pick `Open Preview`
 4. Read and navigate using the preview pane that just opened
+
 
 
 
