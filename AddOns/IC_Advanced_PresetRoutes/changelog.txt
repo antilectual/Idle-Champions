@@ -1,0 +1,2 @@
+25   October 2025 - v0.0.1
+ - An add on that adds a way to let you quick select the Preferred Briv Jump Zones from a dropdown box based on the Briv Scripting Routes site.

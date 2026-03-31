@@ -1,0 +1,32 @@
+{
+	"Name":"RNG Waiting Room",
+	"Version": "v0.3.1",
+    "Includes" : "IC_RNGWaitingRoom_Includes.ahk",
+    "Author" : "ImpEGamer",
+    "Url" : "https://github.com/imp444/IC_Addons/tree/main/IC_RNGWaitingRoom_Extra",
+    "Info" : "This Addon does things with RNG abilities.",
+    "Dependencies" : [
+        {
+            "Name":"IC Core",
+            "Version":"v0.1.0"
+        },
+        {
+            "Name":"Briv Gem Farm",
+            "Version":"v1.5.5"
+        },
+        {
+            "Name":"BrivGemFarm LevelUp",
+            "Version":"v1.3.4"
+        }
+    ],
+    "LoadAfter" : [
+        {
+            "Name":"BrivGemFarm HybridTurboStacking",
+            "Version":"v1.1.5"
+        },
+        {
+            "Name":"BrivGemFarm Briv Feat Swap",
+            "Version": "v1.6.1"
+        }
+    ]
+}

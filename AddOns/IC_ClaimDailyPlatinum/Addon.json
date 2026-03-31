@@ -1,0 +1,18 @@
+{
+	"Name":"Claim Daily Platinum",
+	"Version": "v0.5.9",
+	"Includes" : "IC_ClaimDailyPlatinum_Includes.ahk",
+	"Author" : "Emmote",
+	"Url" : "https://github.com/emmotes/IC_Addons/tree/main/IC_Addons/IC_ClaimDailyPlatinum_Extra",
+	"Info" : "An add on that will claim your daily platinum automagically so you don't have to.",
+	"Dependencies" : [
+		{
+			"Name":"IC Core",
+			"Version":"v0.1.1"
+		},
+		{
+			"Name":"Briv Gem Farm",
+			"Version":"v1.5.5"
+		}
+	]
+}

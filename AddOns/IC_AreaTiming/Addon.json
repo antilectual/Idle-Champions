@@ -1,0 +1,14 @@
+{
+	"Name":"Area Timing",
+	"Version": "v1.1.1",
+    "Includes" : "IC_AreaTiming_Component.ahk",
+    "Author" : "ImpEGamer",
+    "Url" : "https://github.com/imp444/Idle-Champions/tree/main/AddOns/IC_AreaTiming",
+    "Info" : "This Addon will record area transition and completion time.",
+    "Dependencies" : [
+        {
+            "Name":"Briv Gem Farm",
+            "Version":"v1.5.5"
+        }
+    ]
+}

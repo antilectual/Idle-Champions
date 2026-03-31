@@ -1,0 +1,68 @@
+13  November 2025 - v0.2.11
+ - Setting NarrowHeroBoxes to required and force-enabled since it is required for the script to function properly.
+ 9  November 2025 - v0.2.10
+ - Changing recommendation on LevelupAmountIndex to just be x100 - since Level Up is required now.
+ - Changing recommendation on Swap x25 and x100 Hotkey to be clearer.
+25   October 2025 - v0.2.9
+ - Set the `Swap x25 and x100 Mode Hotkeys` setting to default enabled. Also changed its recommended text to note that it is required for x25 levelling.
+23   October 2025 - v0.2.8
+ - Changing the recommendation for Narrow Bench Boxes to Checked because of an unfortunate issue with memory reading discovered by ninjaytsu.
+21   October 2025 - v0.2.7
+ - Updated to use new variable name.
+19   October 2025 - v0.2.6
+ - Fixes/changes to work with BrivGemFarm 4.4.3
+17 September 2025 - v0.2.5
+ - Changed how the script overrides OpenIC. Shouldn't impact anybody except mod creators.
+23    August 2025 - v0.2.4
+ - Removing the NeverOpenActiveTasks settings. It has been removed from the game as of v631.
+12    August 2025 - v0.2.3
+ - Changed the x10 and x25 swap mode to swap x25 and x100 instead. (And reset x10 to default.)
+11    August 2025 - v0.2.2
+ - Moved Hotkeys to their own section.
+ - Added an option for swapping x10 and x25 hotkeys. It will only change them if the option is ticked.
+ 8    August 2025 - v0.2.1
+ - Adding support for Mission-Critical-script-required hotkeys.
+ 6    August 2025 - v0.2.0
+ - Mostly rebuilt this addon from the ground up to fix the game settings just before the game loads - rather than on a 1 second timer (which was starting to be too short for some people).
+ - This is Script Hub v.4.0.0/v4.0.1 agnostic.
+ - For other addon creators - this Overrides OpenIC().
+ 5    August 2025 - v0.1.12
+ - Properly sharing settings with the BrivGemFarm.
+ 3    August 2025 - v0.1.11
+ - Fixing positions of the profile buttons that were messy in some situations.
+22      July 2025 - v0.1.10
+ - (Hopefully) Fixed issue with not finding settings file for the people using Legendary/Rare.
+22      July 2025 - v0.1.9
+ - Slightly changed logic so non-EGS platforms don't need to have the game open to find the settings file.
+26      June 2025 - v0.1.8
+ - Changed how the addon finds the settings file with Irisiri's edit.
+29   January 2025 - v0.1.7
+ - Changing default LevelupAmountIndex to x100 because more people use Level Up addon than don't. And everyone *should* be using the Level Up addon.
+25   January 2025 - v0.1.6
+ - Added support for the Never Open Active Tasks setting.
+25   October 2024 - v0.1.5
+ - Added support for the Show All Bench Seats setting.
+21   October 2024 - v0.1.4
+ - Optimised the way the addon detects read-only so there'll be less impact on performance.
+21   October 2024 - v0.1.3
+ - Added support for detecting if the game settings file is read-only.
+16 September 2024 - v0.1.2
+ - Added support for saving settings to `g_BrivUserSettingsFromAddons`. Shouldn't affect the vast majority of users.
+ 6 September 2024 - v0.1.1
+ - Changed the Settings File Location text into a list view so it can scroll.
+26    August 2024 - v0.1.0
+ - Added profiles that you can swap between. They are entirely optional.
+ - Added a Fix Settings Now button. Will not work while the game is on.
+ 6    August 2024 - v0.0.6
+ - Added tooltips to the settings to explain what some of them are and where to find them in-game.
+11      July 2024 - v0.0.5
+ - Some very minor optimisation improvements.
+10      July 2024 - v0.0.4
+ - Removed the SoundMuted setting option because that value is forced by user data instead of the localSettings.json.
+10      July 2024 - v0.0.3
+ - Fixed a bug where checkbox settings would not be fixed.
+10      July 2024 - v0.0.2
+ - Added four new settings: resolution_x / resolution_y / resolution_fullscreen / LevelupAmountIndex
+ - Fixed a bug where some settings would be fixed and then unfixed by followup checks.
+ 9      July 2024 - v0.0.1
+ - Initial Release. An addon that will fix your game settings in-case they get reset by the game.

@@ -1,0 +1,119 @@
+November 6, 2025
+    - Cosmetic code changes.
+
+November 3, 2025
+    - Updated to use new base DoSwitchFormation.
+    - Added lazy formation checking.
+    - Added critical to formation switching.
+
+October 19, 2025
+    - Many fixes/changes to work with BrivGemFarm 4.4.3
+    - Edits to timers and checks to avoid running unnecessary code which should help reduce memory leaking.
+
+December 22, 2024 - v1.6.0
+    - Fixed a wrong value displayed in the skip setup for Briv's chance to skip.
+    - Updated for Briv's 9J and Accurate Accrobatics feats.
+    - Added auto-detect for Briv jump ranges in Q/W/E formations.
+    - The script checks if familiars are on the field when switching to Q or E.
+    - Added 8J/7J, 12J/11J, 14J/9J and 16J/15J presets for TT.
+
+May 16, 2024 - v1.5.13
+    - Updated mouse click instructions with the addition of Diana.
+
+April 02, 2024 - v1.5.12
+    - Fixed ICScriptHub v4 class update of SharedFunctions_Class.
+
+April 02, 2024 - v1.5.11
+    - Added compatibility with ICScriptHub v4.
+
+Decemeber 10, 2023 - v1.5.10
+    - Updated preferred Briv jump zones for 5J/4J, 6J/4J, 7J/4J and 9J/4J TT presets.
+
+Decemeber 05, 2023 - v1.5.9
+    - Updated 9J/4J Briv jump zones to avoid z32 "collect 10" if the party ends up in z2/z12/z22/z32/z42, as suggested by fedv.
+    - Added a message for imperfect Briv jump with shiny item slot 4 and even jump value.
+    - If Briv is not at perfect jump, both perfect jump and jump+1 values will be used as targetQ for formation switch.
+    - The warning shown when a wrong preset is currently selected won't appear anymore for the blank option.
+    - Fixed an issue that would cause the script to get stuck in an infinite loop if targetQ/targetE values were blank.
+
+November 25, 2023 - v1.5.8
+    - Updated 8/4J + walk 1/2/3/4 Briv jump zones to be the same as 8/4J.
+    - Updated 9J/4J Briv jump zones to allow to stay on a 100%QT path if the party ends up in z2/z12/z22/z32/z42, as suggested by Horizon.
+    - Briv's item 4 levels are used to calculate skip values displayed in the addon's tab. The item's level and loot will be shown on mouseover.
+    - Fixed LevelUp addon link being drawn in the wrong tab.
+    - Fixed an issue with incorrect Briv skip values being read when Briv is not on the field.
+    - Fixed a bug in the stacks calculator that would cause mod[z50] path calculation to always use the formation E value for z100 and higher even when it was checked.
+
+October 26, 2023 - v1.5.7
+    - Fixed an issue with the mouse click setting always switching to the E formation before Q after click cancelling when the formation is empty.
+    - Updated README with instructions for Thellora.
+
+October 25, 2023 - v1.5.6
+    - Updated preferred Briv jump zones for 5J/4J, 6J/4J, 7J/4J and 8J/4J presets so that they work better with Thellora.
+    - Updated mouseclick instructions.
+
+October 19, 2023 - v1.5.5
+    - Updated the 9J/4J path to use Q for z16/z26 instead of E (this is faster than switching to 4J twice until z36).
+    - (MouseClick option) The name of the game's executable saved in settings will be used if different from "IdleDragons.exe".
+    - The "Minimum area before leveling Briv" setting can be modified for all presets and not 8J/4J only.
+
+October 05, 2023 - v1.5.3
+    - The position of the "clear formation" button used to cancel Briv's jump animation
+      when using the mouse click option is detected for other resolutions than 16:9.
+
+September 25, 2023 - v1.5.2
+    - Fixed a bug that showed the enabled checkbox being checked even when it was disabled in settings.
+
+September 25, 2023 - v1.5.1
+    - Added presets for 6J/4J and 7J/4J.
+    - Added an option to use mouse clicks to cancel Briv's jump animation using the clear formation button that doesn't have a hotkey.
+    - BrivMinLevelArea LevelUp setting will be reset to 1 when upgrading from 8J/4J Tall Tales + walk to z5 preset.
+
+September 07, 2023 - v1.4.0
+    New features:
+        - Added an option to simulate multiple runs to the Briv stacks calculator.
+        - Added tooltips.
+    Fixes:
+        - Briv will be allowed to stack on a boss zone to prevent deviating from the normal path.
+          If this effect is undesirable, update the "Farm SB after this zone" setting in the BrivGemFarm tab.
+        - If using a preset, advanced settings are correctly loaded/saved.
+        - If the game is open while starting ICScriptHub, the Modron reset area will be used
+          as the default selection for the stacks calculator reset area.
+        - If no preset is selected, the correct walk/jump/stacks values are shown
+          when simulating walks in Q or E (targetQ or targetE set to 0).
+
+August 21, 2023 - v1.3.1
+    - Fixed loading enabled setting when starting BrivGemFarm.
+    - Fixed showing Briv with 4J100% value when reading skip value while in a formation where Briv has Wasting Haste equipped.
+
+August 16, 2023 - v1.3.0
+    New features:
+        - Added a calculator for target stacks needed to reach a specific area.
+          Supports reverse search to find the highest area reachable from a number of stacks.
+        - Added a checkbox to enable/disable the addon.
+    Fixes:
+        - Disabled editing target Q/E values for presets.
+        - Show name of adventure for each preset.
+        - Display the name of the preset currently loaded in BrivGemfarm_Run next to Status.
+        - Save BrinMinLevelArea LevelUp addon setting when hitting save.
+        - Allow custom settings if no preset has been selected.
+
+August 11, 2023 - v1.2.0
+    - Added quick presets for each of the recommended routes. Each preset will select preferred Briv jump
+    settings in Advanced Settings tab and LevelUp addon if using the 8J/4J route with walks.
+    - Added warnings if using the wrong route for the current Briv nJ number of imperfect jump %.
+    Status now shows the actual running state of the addon and displays a warning if the addon has not been loaded in BrivGemFarm.
+    - Added BrivGemFarm Advanced Settings to the dependency list.
+
+July 17, 2023 - v1.1.2
+    - Updated to ignore warnings when updating IC_BrivGemFarm_Class.
+
+July 01, 2023 - v1.1.1
+    - Fixed swapping to Q/E after stacking if not using 4J feat in W.
+    - Updated BrivFeatSwap to always load after LevelUp addon if both of them are enabled.
+
+June 18, 2023 - v1.1.0
+    - Added settings to look for target Q/E skip values in order to reduce key spam.
+
+June 16, 2023 - v.1.0.0
+    - First release.

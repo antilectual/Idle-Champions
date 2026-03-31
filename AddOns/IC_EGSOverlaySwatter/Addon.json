@@ -1,0 +1,18 @@
+{
+	"Name":"EGS Overlay Swatter",
+	"Version": "v0.1.3",
+	"Includes" : "IC_EGSOverlaySwatter_Includes.ahk",
+	"Author" : "Emmote",
+	"Url" : "https://github.com/emmotes/IC_Addons/tree/main/IC_Addons/IC_EGSOverlaySwatter_Extra",
+	"Info" : "An addon that will disable or enable the EGS overlay during offline stacking.",
+	"Dependencies" : [
+		{
+			"Name":"IC Core",
+			"Version":"v0.1.4"
+		},
+		{
+			"Name":"Briv Gem Farm",
+			"Version":"v1.5.4"
+		}
+	]
+}

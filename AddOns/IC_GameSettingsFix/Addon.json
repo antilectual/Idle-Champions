@@ -1,0 +1,18 @@
+{
+	"Name":"Game Settings Fix",
+	"Version": "v0.2.11",
+	"Includes" : "IC_GameSettingsFix_Includes.ahk",
+	"Author" : "Emmote",
+	"Url" : "https://github.com/emmotes/IC_Addons/tree/main/IC_Addons/IC_GameSettingsFix_Extra",
+	"Info" : "An add on that will fix your game settings during offline stacking.",
+	"Dependencies" : [
+		{
+			"Name":"IC Core",
+			"Version":"v0.1.0"
+		},
+		{
+			"Name":"Briv Gem Farm",
+			"Version":"v1.5.5"
+		}
+	]
+}

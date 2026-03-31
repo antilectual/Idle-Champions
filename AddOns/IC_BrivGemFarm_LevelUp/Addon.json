@@ -1,0 +1,14 @@
+{
+	"Name":"BrivGemFarm LevelUp",
+	"Version": "v1.5.2",
+    "Includes" : "IC_BrivGemFarm_LevelUp_Component.ahk",
+    "Author" : "ImpEGamer",
+    "Url" : "https://github.com/imp444/IC_Addons/tree/main/IC_BrivGemFarm_LevelUp_Extra",
+    "Info" : "This Addon will allow to set up maximum champion level settings for BrivGemFarm.",
+    "Dependencies" : [
+        {
+            "Name":"Briv Gem Farm",
+            "Version":"v1.5.5"
+        }
+    ]
+}

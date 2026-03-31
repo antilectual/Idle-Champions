@@ -1,0 +1,25 @@
+October 21, 2025 - v1.0.3
+    - Fixed addon status not being correctly displayed.
+    - Updated Briv Gem Farm version required (v1.5.10).
+
+October 19, 2025
+    - Fixes/changes to work with BrivGemFarm 4.4.3
+    - Updated timers to not run as much.
+
+April 03, 2024 - v1.0.1
+    - Requires ICScriptHub v4.
+    - Fixed incorrect afiinity settings being applied for versions of AHK under 1.1.35.00 that don't have the >>> operator.
+
+June 20, 2023 - v1.0.0
+    - Fixed potential UI bug depending on addon order.
+    - Fixed minor memory leak.
+    - Added messages if the addon is not loaded before starting Gem Farm.
+    - Added status display.
+
+April 21, 2023 - v.0.1.1
+    - Minor GUI improvements:
+        - Added Load button.
+        - Bugfix for ListView scope.
+
+April 20, 2023 - v.0.1.0
+    - Original Commit.
