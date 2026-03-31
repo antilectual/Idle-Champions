@@ -1,6 +1,6 @@
 {
 	"Name":"Briv Gem Farm",
-	"Version": "v1.7.1",
+	"Version": "v1.7.2",
     "Includes" : "IC_BrivGemFarm_Component.ahk",
     "Author" : "Antilectual & mikebaldi1980",
     "Url" : "https://github.com/antilectual/Idle-Champions/tree/main/AddOns/IC_BrivGemFarm_Performance",

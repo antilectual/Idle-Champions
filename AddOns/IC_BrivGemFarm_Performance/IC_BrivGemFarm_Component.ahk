@@ -34,32 +34,15 @@ GUIFunctions.UseThemeTextColor("InputBoxTextColor")
 Gui, ICScriptHub:Add, Edit, vNewMinStackZone x15 y+5 w50, % g_BrivUserSettings[ "MinStackZone" ]
 Gui, ICScriptHub:Add, Edit, vNewStackZone x15 y+10 w50, % g_BrivUserSettings[ "StackZone" ]
 Gui, ICScriptHub:Add, Edit, vNewRestartStackTime x15 y+10 w50, % g_BrivUserSettings[ "RestartStackTime" ]
+Gui, ICScriptHub:Add, Edit, vNewTargetStacks x15 y+10 w50, % g_BrivUserSettings[ "TargetStacks" ]
 GUIFunctions.UseThemeTextColor("DefaultTextColor")
-Gui, ICScriptHub:Add, GroupBox, Section w400 h50 vBrivGemFarmTargetHasteGroupBox, Target haste stacks for next run
 
-; ------- Haste Stacks Group --------------
-GUIFunctions.UseThemeTextColor("InputBoxTextColor")
-Gui, ICScriptHub:Add, Edit, vNewTargetStacks xs+10 ys+20 w50, % g_BrivUserSettings[ "TargetStacks" ]
-;GUIFunctions.UseThemeTextColor("DefaultTextColor")
-GUIFunctions.UseThemeTextColor("DefaultTextColor")
-Gui, ICScriptHub:Add, Button, x+5 gBriv_Visit_Byteglow_Speed_Avg_Stacks, % "Detect Average"
-Gui, ICScriptHub:Add, Button, x+3 gBriv_Visit_Byteglow_Speed_Max_Stacks, % "Detect Max"
-Gui, ICScriptHub:Add, Text, x+5 yp+2, % "(Provided by "
-GUIFunctions.UseThemeTextColor("SpecialTextColor1", 600)
-Gui, ICScriptHub:Font, underline 
-Gui, ICScriptHub:Add, Text, x+2 gBriv_Visit_Byteglow_Speed_Link, % "byteglow"
-GUIFunctions.UseThemeTextColor("DefaultTextColor")
-Gui, ICScriptHub:Font, norm
-Gui, ICScriptHub:Add, Text, x+1 gBriv_Visit_Byteglow_Speed_Link, % ")"
-; ------- ------------------- --------------
-GuiControlGet, xyVal, ICScriptHub:Pos, BrivGemFarmTargetHasteGroupBox
-xyValX += 0
-xyValY += 55
+xyValH := 50
 if g_GlobalFontSize is number
     xyValH := (g_GlobalFontSize ** 1.0677) * 20.5 + 10 ; 1.0677 = approximate rate of growth of font sizes. 20.5 is default group box size (205) / default font size (10) to get "slices"
 
 GUIFunctions.UseThemeTextColor("DefaultTextColor")
-Gui, ICScriptHub:Add, GroupBox, Section w400 h%xyValH% x%xyValX% y%xyValY% vBrivGemFarmChestBuyGroupBox, Options for buying and opening chests during offline stacking.
+Gui, ICScriptHub:Add, GroupBox, Section w400 h%xyValH% vBrivGemFarmChestBuyGroupBox, Options for buying and opening chests during offline stacking.
 Gui, ICScriptHub:Add, Text, x275 y+15 w240 h50 vgBriv_Button_Status, ; 275 = 4x buttons (*50) + 4x spacers (*15) + one more spacer (*15)
 
 ; ------- Buy/Open Chests Group --------------
@@ -111,6 +94,10 @@ GuiControlGet, xyVal, ICScriptHub:Pos, NewRestartStackTime
 xyValX += 55
 xyValY += 5
 Gui, ICScriptHub:Add, Text, x%xyValX% y%xyValY%, `Time (ms) client remains closed to trigger Restart Stacking (0 disables)
+GuiControlGet, xyVal, ICScriptHub:Pos, NewTargetStacks
+xyValX += 55
+xyValY += 5
+Gui, ICScriptHub:Add, Text, x%xyValX% y%xyValY%, `Target haste stacks for next run
 
 GuiControlGet, xyVal, ICScriptHub:Pos, NewMinGemCount
 xyValX += 105
