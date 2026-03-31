@@ -1,0 +1,75 @@
+November 3, 2025
+    - Fixed (sometimes) bug where Forced Restart wasn't leveling champions
+
+November 3, 2025
+    - Updated locks to be differentiated between leveling and formation.
+    - Updated ellywick's logic to make sure ellywait happens in more cases.
+    - Updated timeout timers.
+
+October 22, 2025
+    - Changed update URL to Anti's for now.
+    - Changed Ellywait to run SetupMax instead of SetupMin as last step before progressing.
+
+October 19, 2025
+    - Many fixes/changes to work with BrivGemFarm 4.4.3
+    - Fixed LastStackSuccessArea not working properly.
+    - Removed continuously running timer. Replaced with timer that only runs on ellywait and ends when ellywait is done.
+    - Updated to make modron formation the leveling formation until after ellywait.
+    - Tests to keep Baldric from joining until after Ellywait.
+    - Added Imoen and Minsc as potential speed champions.
+    
+September 15, 2024 - v0.2.2
+    - DM's ultimate is used automatically to refresh Ellywick's ultimate when he is on the field.
+      He is levelled at the start if he is in the Modron formation.
+
+August 30, 2024 - v0.2.1
+    - Reverted main loop version to 0.1.3.
+
+August 30, 2024 - v0.2.0
+    - Added a non-gem farm redrawing mode for Ellywick that waits for a specific hand.
+
+August 27, 2024 - v0.1.3
+    - Updated the error message displayed on out of date EffectKeyHandler Memory.
+    - Added additional checks for Ellywick being on the field to improve formation switching and use of ultimate.
+
+August 26, 2024 - v0.1.2
+    - Added number of runs and success rate in stats.
+    - Stats are not updated anymore during the first partial run.
+    - An error message box will show up if Scripthub's EffectKeyHandler Memory version is too old.
+    - Fixed Ellywick cards not being read correctly after starting the gem farm when she is not on the field.
+    - Formation can be switched automatically from the stack formation after clicking the start button and clicking another zone.
+
+August 23, 2024 - v0.1.1
+    - The addon now waits for Ellywick on z1 even if Thellora is not in the Q or E formation.
+    - Fixed "Always wait for 5 card draws" setting being ignored.
+
+August 23, 2024 - v0.1.0
+    - Added a reset button for stats.
+    - Ellywick will use her ultimate early on z1 if there are redraws left and the number of gem cards cannot be achieved without redrawing.
+    - Fixes:
+        - Disabling "Gem farm mode" doesn't prevent formation switching anymore.
+        - LevelUp settings work as intended, and use the "MinLevel" settings while waiting for Ellywick's cards (except Thellora).
+        - Thellora doesn't get placed on the field after a forced client restart.
+        - The "Always wait for 5 card draws" setting works on the last redraw.
+
+August 15, 2024 - v0.0.4
+    - Added stats (average gem bonus on z1, average number of redraws).
+    - Added setting to wait for 5 card draws before progressing (currently doesn't work after the last redraw)
+    - The default value for the "Max redraws" setting is now 1.
+    Fixes:
+        - Attempt to prevent Thellora from being put on z1 before Ellywick cards are drawn.
+
+August 15, 2024 - v0.0.3
+    - Added LevelUp addon (v1.3.4) as a dependency.
+    - Removed imports and Ellywick handler from folder (update Scripthub instead).
+    - Removed percent setting box.
+    - Added several status messages on the addon's tab.
+    Fixes:
+        - Fixed timeouts in loops not being used as intended.
+        - Changed "rerolls" to "redraws".
+
+August 14, 2024 - v0.0.2
+    - Added missing include import file.
+
+August 14, 2024 - v0.0.1
+    - First release.

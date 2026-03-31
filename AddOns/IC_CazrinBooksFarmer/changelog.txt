@@ -1,0 +1,4 @@
+21  February 2026 - v0.0.2
+ - Swapping to using DLL timing calls rather than A_Tick count to avoid the 49day+ windows uptime issue.
+28    August 2025 - v0.0.1
+ - Initial Release. An addon that will farm Cazrin's Library of Lore books by excessively spamming specialisation potions to keep resetting max books from 1500 to 500 and back again.

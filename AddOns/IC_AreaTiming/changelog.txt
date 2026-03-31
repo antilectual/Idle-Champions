@@ -1,0 +1,70 @@
+October 19, 2025
+    - Fixes/changes to work with BrivGemFarm 4.4.3
+    
+November 24, 2024 - v1.1.1
+    - Added additional triggers for recording stacking events from ScriptHub.
+
+April 03, 2024 - v1.1.0
+    - Requires ICScriptHub v4.
+    - Briv Gem Farm addon is now a dependency to make sure start/stop buttons functions
+      are always overloaded when the "Start/Stop with BrivGemFarm" setting is enabled.
+    - Added recording/display of Briv Haste and Steelbones stacks for every zone.
+
+December 12, 2023 - v1.0.4
+    - Fixed an issue that would make ScriptHub crash when trying to reconnect to the timer script.
+    - Fixed the behavior of the "Start/Stop along with BrivGemFarm" button.
+    - Fixed stacks not being recorded if Modron reset happens before the script can switch back to a different formation from the stacking formation.
+
+October 25, 2023 - v1.0.3
+    - The start/stop/close buttons are grayed out depending on the state of the timer script.
+    - Prevented a potential issue when using a portable version of AHK.
+    - Fixed an issue with the window asking to close TimerScript_Run.ahk on ScriptHub exit not being shown.
+
+October 18, 2023 - v1.0.2
+    - Reduced the memory size of data records by a factor of 6.
+    - Improved data displaying speed.
+    - Drastically improved run/session scrolling speed.
+    - Fixes:
+        - The stop button in BrivGemFarm tab won't be able to close the timer script anymore.
+          Instead, a message asking if wanting to close the script will be shown on ICScriptHub exit.
+        - The values filtered out by the mod50 outlier option are not displayed anymore when they have a null count.
+        - Fixed null values for the session selection dropdown / session counter after starting/stopping when no sessions are recorded yet.
+
+September 24, 2023 - v1.0.1
+    - Reduced memory usage.
+    - Fixes:
+        - The mod50 "exclude outliers" setting filters single run averages properly.
+          Both run and session counters will be shown.
+        - Fixed synchronization with BrivGemFarm Start/Stop buttons.
+        - When updating the selection of runs after a new run begins, the dropdown list is not closed.
+        - Fixed a computation error that would sometimes display run/session start timestamp off by one second.
+
+September 21, 2023 - v1.0.0
+    Complete rewrite of the addon.
+    - New features:
+        - Launches a separate script to record values. Stats can be viewed as long as the script remains open.
+          When closing ICScriptHub using the upper right corner control, a message will pop
+          asking if the script should be closed or not.
+        - Option to start/stop the script when clicking on BrivGemFarm tab buttons.
+        - View multiple sessions.
+        - View individual runs.
+        - Show cumulative run time.
+        - Show resetting time.
+        - Show game speed (option to show uncapped speed).
+        - Option to show mod50 values without z1/stack zone/reset outliers.
+        - Show stacks gained online/offline.
+        - Additional average data visualization.
+        - Right-click opens a context menu to copy rows (or Ctrl+C).
+        - Ctrl+A or double click to select all rows.
+    - Fixes:
+        - Zone recording being interrupted by scrolling the UI.
+        - Zone recording is actually reliable overall.
+        - Reduced memory usage.
+
+April 25, 2023 - v.0.1.1
+    - Added timers that closer reflect the actual game mechanics.
+    - Known issues : zone skipping when dragging the vertical bar, inaccurate or negative values.
+
+April 24, 2023 - v.0.1.0
+    - Area timing functions for Idle Champions.
+    - Known issues: Timing transitions starts from when the zone is completed, registering the animation from Briv jump returns.

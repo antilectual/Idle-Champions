@@ -1,0 +1,4 @@
+01   October 2024 - v0.0.2
+ - Added a button to the bottom of Briv Gem Farm tab that will on-demand hide the Default button.
+29 September 2024 - v0.0.1
+ - Initial Release. An add on that will hide the default gem farm profile as long as another profile exists.

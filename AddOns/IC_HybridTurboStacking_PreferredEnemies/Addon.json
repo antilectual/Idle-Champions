@@ -1,0 +1,18 @@
+{
+	"Name":"HybridTurboStacking PreferredEnemies",
+	"Version": "v0.0.5",
+	"Includes" : "IC_HybridTurboStacking_PreferredEnemies_Component.ahk",
+	"Author" : "Emmote",
+	"Url" : "https://github.com/emmotes/IC_Addons/tree/main/IC_Addons/IC_HybridTurboStacking_PreferredEnemies_Extra",
+	"Info" : "An add on that adds a way to quickly set up the Preferred Briv Stack Zones in the TurboHybrid addon.",
+	"Dependencies" : [
+		{
+			"Name":"IC Core",
+			"Version":"v0.1.1"
+		},
+		{
+			"Name":"BrivGemFarm HybridTurboStacking",
+			"Version":"v1.1.5"
+		}
+	]
+}

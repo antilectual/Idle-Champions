@@ -1,0 +1,18 @@
+21  February 2026 - v0.1.3
+ - Swapping to using DLL timing calls rather than A_Tick count to avoid the 49day+ windows uptime issue.
+ 9  November 2025 - v0.1.2
+ - Fixed a bug that would cause saving to fail.
+19   October 2025 - v0.1.1
+    - Fixes/changes to work with BrivGemFarm 4.4.3
+28 September 2025 - v0.1.0
+ - Refactoring the entire addon so it works better.
+ 5    August 2025 - v0.0.5
+ - Properly sharing settings with the BrivGemFarm.
+16 September 2024 - v0.2.4
+ - Added support for saving settings to `g_BrivUserSettingsFromAddons`. Shouldn't affect the vast majority of users.
+27    August 2024 - v0.0.3
+ - Added two on-demand buttons that will enable or disable the overlay while the game is closed. You can use this to allow you to buy things in-game while the gem farm script is not running.
+18    August 2024 - v0.0.2
+ - Added a check that disables the addon for people who aren't on EGS.
+17    August 2024 - v0.0.1
+ - An addon that will disable or enable the EGS overlay during offline stacking.

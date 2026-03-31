@@ -1,0 +1,18 @@
+{
+	"Name":"BrivGemFarm HideDefaultProfile",
+	"Version": "v0.0.1",
+	"Includes" : "IC_BrivGemFarm_HideDefaultProfile_Component.ahk",
+	"Author" : "Emmote",
+	"Url" : "https://github.com/emmotes/IC_Addons/tree/main/IC_Addons/IC_BrivGemFarm_HideDefaultProfile_Extra",
+	"Info" : "An add on that will hide the default gem farm profile as long as another profile exists.",
+	"Dependencies" : [
+		{
+			"Name":"IC Core",
+			"Version":"v0.1.1"
+		},
+		{
+			"Name":"Briv Gem Farm",
+			"Version":"v1.4.7"
+		}
+	]
+}

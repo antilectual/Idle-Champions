@@ -1,0 +1,310 @@
+November 9, 2025
+    - Fixed typos and code cosmetic updates.
+    - Possible fix for champs with min/max 0/x occasionally not leveling.
+
+November 3, 2025
+    - Added better logic checks to different functions.
+    - Added loopstring indicator to show when party setups happen.
+    - Reorganized how champions are loaded for party setup functions.
+    - Updated some formation checks to be lazy (do not test directly 1->1, just that the champs in the current formation are also in the one being tested.)
+    - Updated operation ordering in several places.
+    - Updated leveling and formation locks.
+    - Added a new timer (IsTimeUp) class/function and is used in cases where elapsed time no longer is.
+    - Fixed stacking using time instead of stacks.
+    - Fixed Ellywaiting again.
+    - Added some minor commenting.
+    - Fixed x25 not working.
+    - Fixed Typos.
+    - Updated default values for levelup that were provided by the community.
+    - Updated some default times used for timeouts.
+    - Added critical to formation switching.
+
+October 30, 2025
+    - Added Baldric default levels.
+    - Removed formation lock preventing Baldric from leveling during Ellywait.
+
+October 29, 2025
+    - Updated to use proxy settings file.
+    - Updated x25 levelup to only togglectrl when pressing leveling key up and not for full leveling process.
+    - Fixed calculation for Thellora in prediciton to not include Haste.
+    - Added alternative ways to increase click damage in zones.
+    - Added rate limit to Click Damage keypresses.
+    - Limited Click Leveling to after Ellywait.
+    - Reverted lock on clicks and baldric on Ellywick.
+    
+October 27, 2025
+    - Added setting to avoid leveling Briv if Thellora+Briv combined jumps end up hitting a boss zone.
+    - Removed duplicate code in HeroDefinitionsLoader.
+
+October 26, 2025
+    - Fixed bug where wrong function was called that prevented upgrade check from working correctly.
+    - Fixed bug where upgrade check would not work if the champion was not in the Modron formation and as such did could not upgrade past specializations.
+
+October 22, 2025
+    - Changed update URL to Anti's for now.
+    - Updated how levelupx25 works.
+    - Fixed bug with Baldric not entering formation.
+
+October 19, 2025
+    - Many fixes/changes to work with BrivGemFarm 4.4.3
+    - Removed StackFarmSetup (should be unnecessary) and removed all click related code from BrivFeatSwap.
+    - Added 100 levels to click damage per area after z1000 so higher zones don't fall behind on click damage.
+    - Added Emmote's LevelUpx25 edit.
+    - Added more concurrent keyspam ability.
+    - Fixed a recursion issue.
+    - Tests to keep Baldric from joining until after Ellywait.
+    - Force Briv/Shandie now forces Briv/Ellywick.
+
+November 27, 2024 - v1.3.7
+    - While setting up the stack formation, the party automatically falls back one zone if it is under attack and can't swap to W.
+
+November 24, 2024 - v1.3.6
+    - Fixed a bug when Briv is levelled before offline stacking.
+
+August 30, 2024 - v1.3.5
+    - Added default min/max level settings for Ellywick.
+    - Updated leveling priority for Ellywick.
+
+August 10, 2024 - v1.3.4
+    - Removed workaround fix + need for CloseWelcomeBack addon compatibility for WaitForModronReset() (not need anymore since SH commit 4290701).
+    Fixes:
+        - Added sanity check to ReadHeroUpgradesSize() memory read needed for default max level and failed recovery setup.
+        - Cached values are immediately returned when building max level cache.
+
+May 15, 2024 - v1.3.3
+    - Added a setting for loading a different formation from the default Q for z1.
+    - Added a setting for delay between two sets of inputs during Min leveling.
+    - Added default min/max level settings for Diana.
+    - Updated default max settings for Hew Maan (360 -> 220) and Widdle (350 -> 310).
+    - Added descriptions for Gromma, Diana and Strongheart abilities that were missing.
+    - Champion names and upgrade lists are populated only once when the LevelUp tab has been clicked on for the first time on reload.
+    - Added version to definitions parser.
+    - Fixes:
+        - Leveling priority for Briv and Shandie is updated when Thellora skips.
+
+April 02, 2024 - v1.3.2
+    - Added compatibility with ICScriptHub v4.
+
+February 09, 2024 - v1.3.1
+    - Fixed compatibility issues with CloseWelcomeBack addon.
+
+February 09, 2024 - v1.3.0
+    - Added a setting to deal with low favor that levels up champions ordered by cost of next upgrade, cheapest first.
+    - Fixed an issue with the Thellora handler not being refreshed after Modron reset and Thellora Rush wait being skipped on some occasions.
+    - Click damage level is now an exact match of the highest area achieved when the matching setting is enabled.
+    - The value for Minimum click damage level is now 1, thus matching the in-game value after a reset.
+    - Updated description for Presto's Component Scavenger ability.
+    - Added a fix for a bug in the main script which sometimes skips the wait for Modron reset when an incorrect value for the current zone is being read.
+
+January 11, 2024 - v1.2.4
+    - The "Minimum area to reach before leveling Briv" setting now waits until the transition to the highest zone has
+      begun, if the current zone is under the target.
+    - Updated ability description for Karlach.
+
+January 09, 2024 - v1.2.3
+    - Updated ability descriptions for Sisaspia, Wyll, Shaka and Dhani.
+
+December 14, 2023 - v1.2.2
+    - Text displaying which current hero is being leveled up to min/max target will show up under the Level Up tab instead of the Main loop,
+      to prevent an issue with stats not being updated after resetting.
+    - Click damage will only be leveled up if there is enough gold to buy at least one upgrade.
+    - Click damage will stop being leveled up to the target level when there is not enough gold to buy the full upgrade
+      (depending on the current x10/x25/x100/double arrow leveling settings).
+    - Click damage won't be leveled once more after restarting the gem farm when the target has been reached if the spam click damage option is not active.
+    - Dashwait timeout is now either 10s or 30s depending on whether Shandie's "Second Wind" feat is active, before timescale is applied (previously always 30s).
+    - Dashwait estimate is increased when the party is currently transitioning to the next zone and Shandie's Dash timer is paused.
+    - Fixed an issue with autoprogress being constantly toggled when using Shandie if the HybridTurboStacking addon is enabled.
+
+November 17, 2023 - v1.2.1
+    - Click settings fixes:
+        - Fixed "Match up highest area" setting temporarily halting the script's execution when there was not enough gold to reach the target level.
+        - "Spam click damage" does an extra click at x1/100 before starting to spam (vanilla settings).
+        - Toggling off "Spam click damage" will stop the spam immediately after settings are saved.
+
+November 15, 2023 - v1.2.0
+    - Settings updates:
+        - Added mod50 zones for Briv Min Leveling (Briv will only be leveled in one of these zones before his jump ability is unlocked).
+        - Added setting for Briv minLevel before online stacking.
+        - AutoCalculateBrivStacks setting will be used for Briv leveling before stacking.
+        - Click damage setup now uses memory reads. MinClickDamage is now the target for Click Damage level during Min leveling on z1.
+          Added an extra setting that will match Click damage level to the highest area reached +20 so enemies are always one-hit.
+        - Removed Thellora Rush Wait setting. Thellora Rush Wait will use memory reads instead.
+        - Added default min/max level settings for Nordom.
+    - GUI updates:
+        - The temp settings window and popups displayed after clicking on Default, Save, and Undo buttons
+          will appear close the button that triggered the window instead of the middle of the screen.
+        - Added "Menu" text over the top-right menu.
+        - Updated "Min Settings" to "General Settings" in menu choices.
+    - Fixes:
+        - Reduced memory bloat after loading definitions.
+        - Reduced memory usage and waiting time after starting BrivGemFarm caused by last upgrade level calculations.
+        - Fixed Jang Sao's Stellar Nursery ability description.
+        - HeroDefines.json is created if the file is missing even when there are no updates.
+        - Fixed definitions server timestamp showing up in incorrect places.
+        - Fixed default min/max level settings not getting updated when a value has never been saved for that champion.
+        - Fixed default min/max levels radio buttons resetting non-speed champions settings with saved values.
+        - Fixed "Briv minLevel before stacking" controls displaying an extra colon after selecting an upgrade.
+        - Fixed the "Click Damage Spam" setting values displayed in temp settings window.
+
+October 27, 2023 - v1.1.0
+    - Added default min/max level settings for Thellora.
+    - Added Thellora Rush Wait setting (stops auto progress and waits for Thellora to activate her Rush ability).
+    - Added settings for leveling click damage.
+    Fixes:
+        - Added ps21 as fallback server if master fails to return a playserver for definitions.
+        - Fixed an issue with the definitions updater script not getting the correct parameters on some versions of AHK.
+        - Champions whose maxLevel is set to 0 won't be leveled up even if they are saved in a formation.
+
+October 04, 2023 - v1.0.0
+    - Definitions are now fetched from CNE servers instead of using the local cachedDefinitions.json file.
+      This fixes loading definitions for Epic Games users.
+    - Language used for upgrade descriptions/hero names can be selected in GUI settings.
+    - UI sections are shown/hidden depending on available screen height even when the ICScripthub window is only partially visible.
+    - Non-speed champions will be leveled up to Minlevel before leaving z1 (assuming enough favor and not reaching timeout).
+
+September 06, 2023 - v0.6.4
+    - Added default min/max level settings for Astarion.
+    - Fixes:
+        - Fixed the definitions timestamp being incorrectly parsed in some cases.
+        - Implemented better error handling for the table_checksums filter and re-enabled it.
+
+August 22, 2023 - v0.6.3
+    - Added Lae'Zel in the champion list that prioritizes speed champions for min leveling.
+
+August 11, 2023 - v0.6.2
+    - Improved search for cached_definitions file speed.
+    - Hotfixes:
+        - Disabled automatic cached_definitions search for EG.
+        - Disabled table_checksums because of a parsing error (the addon may load "new" definitions at the start more often).
+
+August 08, 2023 - v0.6.1
+    - Added indicators next to the "jump-to-section" control that show the currently displayed sections.
+    - The saved location of the cached_definitions file is now shown under the GUI settings section.
+    (It is still possible to change it by manually loading a new file).
+    - Fixes:
+        - Increased font size for the "jump-to-section" control.
+        - Fixed the value displayed for the SkipMinDashWait setting in temporary settings view.
+        - Fixed automatic search for cached_definitions (Steam, Epic Games, CNE).
+
+July 27, 2023 - v0.6.0
+    - Updated the overall sections of the GUI to resize themselves better on creation and when manually resizing the window.
+    - It is now possible to jump to sections that would be hidden on smaller screens using the list located on the top right of BrivGemFarm Settings.
+    - Fixes:
+        - Fixed time format for the text displaying the time when definitions were last loaded.
+        - Changed the command type when sending resize commands to the GUI from PostMessage to SendMessage. An error message will pop up on failure.
+
+July 22, 2023 -
+    - Added Havilar to the list of speed champions prioritized during leveling.
+
+July 21, 2023 - v0.5.1
+    - After loading definitions, the latest server timestamp is now shown as a tooltip for Last updated text (user local time).
+    - Fixes:
+        - Fixed reading and filtering keys from the cached_definitons file when the path to the folder has been found.
+        - Fixed default value for BrivMinLevelArea setting (was 0, now 1) to match the value initially set in the GUI.
+        - After starting BrivGemFarm, when filling missing min/max settings, the script will retry to read memory to calculate those settings every 1000ms until success.
+
+July 17, 2023 - v0.5.0
+    - Static upgrade descriptions are displayed as tooltips when hovering a champion's upgrade list item.
+    - Fixed current displayed formation not being saved properly when reloading definitions.
+
+July 01, 2023 - v0.4.4
+    - Fixed champions leveling in W formation.
+    - Updated BrivFeatSwap to always load after LevelUp addon if both of them are enabled.
+
+June 25, 2023
+    - BrivMinLevelStacking setting can now be selected in the dropdown list under "Min Settings".
+
+June 24, 2023 - v0.4.3
+    - New Features:
+        - Added a separate setting for minimum Briv level before stacking. After stacking, will resume MaxLevel.
+        - Added a setting to delay Briv leveling until a minimum area has been reached (used to walk the first few areas if Briv is in E formation).
+        - Added an option to skip DashWait after leveling champions to MinLevel when stacking really early.
+
+June 23, 2023 - v0.4.2
+    - Fixed GUI sections being incorrectly displayed depending on addon order.
+    - Added status loop to show if the addon/BrivGemfarm is currently active.
+    - Show all warnings under status loop.
+
+June 21, 2023 -
+    - Updated DashWait to level up champions to MaxLevel faster.
+
+June 18, 2023 -
+    - Fixed champions not being leveled to MaxLevel in W formation before stacking.
+    - Fixed displaying DashWait Loop.
+
+June 15, 2023 - v0.4.1
+    - Fixed unloading TempSettings theme.
+    - Fixed F key spam after DoPartySetupMin().
+
+June 12, 2023 - v0.4.0
+    - New features:
+        - Added a button to show a window displaying current/unsaved settings.
+        - Added buttons to change default min/max values for champions with no default settings (mostly non speed/gold-find champions) - min: level 0/1 - max: level 1/Last upgrade (previously always min:0 - max:1)
+        - Added failed conversion recovery setting to level champions to soft cap when Briv gets below 50 stacks in order to speed up reaching the minimum stack zone.
+        - Added tooltips for several controls.
+    Changes:
+        - Settings under the "Min Settings" section are only applied after saving.
+    Fixes:
+        - Fixed loading definitions file if path not found.
+        - Improved search for cached_definitions file.
+
+June 11, 2023 - v0.3.6
+    - Added Melf in the champion list that prioritizes speed champions for min leveling.
+    - Updated default min/max settings for BBEG, Sentry.
+    - Added loopstring during max champion leveling.
+    - Fixes:
+        - Fixed creating hero definitions file if not existing.
+        - Fixed Q/W/E formation not immediately being loaded after a change.
+
+June 08, 2023 - v0.3.5
+    - Added BBEG in the champion list that prioritizes speed champions for min leveling.
+    - Speed champions will be now prioritized for max leveling (except for Briv so other champions get leveled properly if Briv is set to higher levels)
+
+June 07, 2023 - v0.3.4
+    - Added default upgrade settings for BBEG.
+    - Fixed ultimate upgrade icon not showing.
+    - Fixed specialization upgrade padding.
+
+June 04, 2023 - v0.3.3
+    - Added a MinLevel Timeout setting. The initial champion leveling will stop after this value has been reached. If set to 0, minimum leveling will be skipped.
+
+June 03, 2023 - v0.3.0
+    - Added automated checks for new definitions on start.
+    - Added a checkbox setting to force Briv/Shandie to be leveled up to minLevel before other champions.
+    - Added a setting for maximum number of F keys inputs at the same time during initial leveling.
+    - Swapped Virgil with Nahara for initial leveling priorities.
+
+May 29, 2023 - v0.2.3
+    - Corrected bug during min leveling.
+
+May 29, 2023 - v0.2.2
+    - Updated min/max default settings.
+    - Updated min leveling logic to prevent undesirable leveling past target level from happening.
+    - Champions max leveling will now start while waiting for Shandie's dash.
+    - Champions in the stack formation (W) will be leveled to their max level right before stacking (including Tatyana when used for online stacking).
+
+May 26, 2023 -
+    - Min/max values are refreshed after a champion's upgrade list has been closed without a selected upgrade
+
+May 25, 2023 -
+    - Spoilers now update as soon the champion would be able to be unlocked, after a GUI change.
+
+May 22, 2023 - v0.2.1
+    - Fixed settings not saving properly.
+    - Fixed default settings and undo button behavior.
+    - Fixed hero definitions loading for non-Steam users.
+
+May 22, 2023 - v0.2.0
+    - Added list of upgrades for each champion to help choosing specific upgrades. (WIP)
+    - Added Q,W,E formation selection dropdown. Loads Q formation on startup, checks for changes and saves after each reset.
+    - Added option to show spoilers for unreleased champions.
+    - Added text showing current progress when loading new definitions.
+    - Known issues:
+        - Item auto selection in list when the min or max level saved setting isn't tied to an upgrade, or if not actively selecting an upgrade.
+
+May 02, 2023 - v0.1.0
+    - BrivGemFarm LevelUp - This Addon will allow to set up maximum champion level settings for BrivGemFarm.
+    - Missing features :
+        - Settings are currently not saved in profiles.
+        - It is currently not possible to select predetermined levels from the dropdown list for each champion.
+        - After leaving z1, champions will be leveled by ID instead of speed champs first then gold champs.

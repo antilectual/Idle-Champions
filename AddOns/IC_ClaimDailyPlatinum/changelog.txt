@@ -1,0 +1,122 @@
+19     March 2026 - v0.5.9
+ - Attempting to make the Celebration checker less memory intensive. It no longer reads the entire WRL in one go.
+10     March 2026 - v0.5.8
+ - Erm... yeah. Fixed a bug with memory reading Platinum that has likely been in a long time.
+21  February 2026 - v0.5.7
+ - Swapping to using DLL timing calls rather than A_Tick count to avoid 49day+ windows uptime issue.
+24  December 2025 - v0.5.6
+ - Fixing a bug where claimed count wouldn't increment beyond 1.
+ 5  December 2025 - v0.5.5
+ - Added an extra check to claiming Celebration codes to prevent possible false-positive results.
+ 3  December 2025 - v0.5.4
+ - 3rd time unlucky?
+ 3  December 2025 - v0.5.3
+ - Attempt number 2.
+ - Also cleaning up some doubled up variables.
+ 3  December 2025 - v0.5.2
+ - Hopefully fixing an issue with Celebration claiming.
+21  November 2025 - v0.5.1
+ - Now that Trials has a memory read for when it is ready to claim - I have decided to make Trials check every 8 hours ± 30 minutes to save on unnecessary server calls.
+10  November 2025 - v0.5.0
+ - Fixed a long-ish standing bug with CDP that caused Cooldown timers to not properly populate after a check.
+10  November 2025 - v0.4.12
+ - Reinstating Trials memory read check.
+ - Potentially fixing a bug where Trials would go unclaimed for ages. Also potentially breaking it. Time will tell.
+10  November 2025 - v0.4.11
+ - Fixed an issue where an error in the server call response would lead to bad data. For example - Trials saying it's inactive when it isn't.
+08  November 2025 - v0.4.10
+ - Fixed a stupid mistake that caused memory read checks to keep repeating even when they shouldn't.
+05  November 2025 - v0.4.9
+ - Adding some checks and balances to prevent runaway claim counters. This doesn't solve the underlying issue though.
+25   October 2025 - v0.4.8
+ - Fixing an issue with the Free Bonus Chests not working for platforms other than Steam.
+21   October 2025 - v0.4.7
+ - Fixed an issue where userid / hash / instanceid were getting duplicated in the call.
+20   October 2025 - v0.4.6
+ - Fixing an issue where CDP wouldn't update timers every minute.
+ - Changing the way timer values are calculated and displayed (using the same method the new stats addon does).
+19   October 2025 - v0.4.5
+ - Many Many Updates/Fixes/changes to work with BrivGemFarm 4.4.3
+23 September 2025 - v0.4.4
+ - Adding a number of memory reads to make things a little more response.
+   - Daily Platinum: Rewards Claimed / Boost Rewards Claimed.
+   - Trials Rewards: Whether a Trial is claimable or not.
+   - Free Weekly Shop Offers: Number of free rerolls.
+ - Adding a counter for Unclaimed Guide Quests to Guide Quests. Mostly just to fill in the gap.
+17 September 2025 - v0.4.3
+ - Adding the number of free rerolls to the Free Weekly Shop Offers box.
+28    August 2025 - v0.4.2
+ - Guide Quest checking will now utilise a memory read. If it sees 1 or more guide quests are claimable - it will claim immediately - no matter what the check timer currently says.
+11    August 2025 - v0.4.1
+ - Fixed some copy-paste visual errors. (Nothing functional.)
+ 8    August 2025 - v0.4.0
+ - Functionally this should be no different than before. Visually it is a little different. This update is Script Hub version agnostic.
+ - Refactored addon a little.
+ - Using the g_ServerCall class properly this time. There should be no change in functionality - just now more in-line with standards.
+ - Changed GUI to be more similar to the new Game Settings Fix.
+ - Changed the group box headers to be the actual checkboxes.
+ - Made the status message sticky for up to 8 seconds.
+ 5    August 2025 - v0.3.10
+ - Properly sharing settings with the BrivGemFarm.
+30      July 2025 - v0.3.9
+ - Randomising the 8 hour delay to ± 30 minutes so the timers don't all try to check around the same time every 8 hours. Hopefully it'll help spread them out a bit - but still average around 8 hours.
+ - When a Trial is not running and is on cooldown - the Trials Status message will tell you when it can be joined.
+24      July 2025 - v0.3.8
+ - Adding support for guide quest rewards.
+18      July 2025 - v0.3.7
+ - Trivially improving the clearing of Daily Boost and Trials Status messages. Now also works when Platinum or Trials stop being claimed.
+ 4      July 2025 - v0.3.6
+ - Modifying some timers for Trials slightly.
+ - Properly making Daily Boost and Trials Status messages clear when script is stopped.
+ 4      July 2025 - v0.3.5
+ - Fixing how Tiamat's HP is calculated because CNE.
+29      June 2025 - v0.3.4
+ - Modifying timers slightly for trials rewards claiming.
+23      June 2025 - v0.3.3
+ - Adding support to claim trials rewards.
+15      June 2025 - v0.3.2
+ - Fixed a very CNE issue with Claim Free Premium Pack Bonus Chests. Some were pretending to be claimable but weren't. Thank you James for being a guinea pig.
+14      June 2025 - v0.3.1
+ - Potentially fixing an issue with the Day 4+ special reward from celebrations not being claimed.
+15       May 2025 - v0.3.0
+ - Claiming will now happen while the game is on. Removing any delay between a check and claiming.
+18  December 2024 - v0.2.2
+ - Slight bug fix to Celebration rewards code that will allow it to claim multiple codes for the same day - if such a thing ever occurs (it probably won't).
+04  December 2024 - v0.2.1
+ - Celebration rewards now have a proper timer (when a proper timer exists - falls back to 8 hours if not).
+04  December 2024 - v0.2.0
+ - Adding support to claim celebration rewards.
+25  November 2024 - v0.1.3
+ - Fixed a minor display issue with the Platinum Daily Boost timer.
+ - Fixed Daily Boost Timer so it actually ticks down between checks.
+19  November 2024 - v0.1.2
+ - Fixed a bug where bonus chests weren't being added to the list of bonuses to claim because of a stupid copy-paste issue.
+ - Fixed a bug where claiming message would be visually cut-off.
+18  November 2024 - v0.1.1
+ - Hopefully fixing a bug where some bonus chests weren't appearing in the shop data.
+ - Fixing an issue where disabled timers would continue to run.
+18  November 2024 - v0.1.0
+ - Adding support to claim the free bonus chests that packs on sale get if you've already bought them. They are referred to by the addon as `Free Premium Pack Bonus Chests`.
+ - Added a timer for Platinum Daily Boost expiry if it's active.
+ - Staggered the starting check times for each claim so that it doesn't spam the server after 1 minute.
+ 5  November 2024 - v0.0.9
+ - Fixing a bug where Free Offer IDs wouldn't reset after being claimed.
+ 3  November 2024 - v0.0.8
+ - Annoyingly I've had to add extra checks to the Platinum claim due to CNE being CNE with the next reset time.
+ 2  November 2024 - v0.0.7
+ - Changed the way the timers work to avoid drift.
+23   October 2024 - v0.0.6
+ - Adding support for automatically revealing the weekly offers to minimise their time drift (since their 7 day clock doesn't start until after they've been revealed).
+23   October 2024 - v0.0.5
+ - Attempting yet another further fix that will prevent large values for days claimed and yet never actually claiming.
+20   October 2024 - v0.0.4
+ - Fixed a few bugs caused by typos.
+ - Added a slight delay to checking for the updated cooldown after a successful claim.
+ - Removed redundant code.
+19   October 2024 - v0.0.3
+ - Fixed (hopefully) a bug where ClaimDailyPlatinum and PotionSustain would be incompatible.
+19   October 2024 - v0.0.2
+ - Adding a little bit of sanity checking when sending server calls.
+ - Renaming a variable because I realised it might be overwriting a global of the same name.
+18   October 2024 - v0.0.1
+ - An add on that will claim your daily platinum automagically so you don't have to.

@@ -1,0 +1,14 @@
+{
+	"Name":"Process Affinity",
+	"Version": "v1.0.3",
+    "Includes" : "IC_ProcessAffinity_Component.ahk",
+    "Author" : "ImpEGamer",
+    "Url" : "https://github.com/imp444/IC_Addons/tree/main/IC_ProcessAffinity_Extra",
+    "Info" : "This Addon will allow to restrict IdleDragons.exe to be run only on a chosen selection of cores. Toggling any cores for the game will also prevent the GUI/GemFarm scripts from using them.",
+    "Dependencies" : [
+        {
+            "Name":"Briv Gem Farm",
+            "Version":"v1.5.10"
+        }
+    ]
+}
