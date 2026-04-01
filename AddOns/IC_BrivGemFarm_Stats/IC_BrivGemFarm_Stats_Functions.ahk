@@ -596,7 +596,7 @@ class IC_BrivGemFarm_Stats_Component
             textColor := Format("{:#x}", GUIFunctions.CurrentTheme["HeaderTextColor"])
             GuiControl, ICScriptHub: +c%textColor%, LoopID,
             GuiControl, ICScriptHub:, LoopID, % SharedRunData.LoopString
-            GuiControl, ICScriptHub:, StatsPlayServerID, % (SharedRunData.PlayServer == "ps22" && g_SF.Memory.ReadWebRoot() == "" ? "Unknown" : SharedRunData.PlayServer)
+            GuiControl, ICScriptHub:, StatsPlayServerID, % SharedRunData.PlayServer . (g_SF.Memory.ReadWebRoot() == "" ? "?" : "")
             if (SharedRunData.LowestHasteStacks  AND SharedRunData.LowestHasteStacks < this.LastLowestHasteStacks)
             {
                 this.LastLowestHasteStacks := SharedRunData.LowestHasteStacks
@@ -707,7 +707,7 @@ class IC_BrivGemFarm_Stats_Component
             GuiControl, ICScriptHub:, GoldsBoughtID, % this.DecideScientific(this.SharedRunData.PurchasedGoldChests)
             GuiControl, ICScriptHub:, GoldsDroppedID, % this.DecideScientific(this.CalculateDroppedChests(currentGoldChests, 2))
             GuiControl, ICScriptHub:, ShiniesID, % this.SharedRunData.ShinyCount
-            GuiControl, ICScriptHub:, StatsPlayServerID, % (this.SharedRunData.PlayServer == "ps22" && g_SF.Memory.ReadWebRoot() == "" ? "Unknown" : this.SharedRunData.PlayServer)
+            GuiControl, ICScriptHub:, StatsPlayServerID, % this.SharedRunData.PlayServer . (g_SF.Memory.ReadWebRoot() == "" ? "?" : "")
             GuiControl, ICScriptHub:, StatsLowestHasteID, % this.SharedRunData.LowestHasteStacks == 9999999 ? "" : this.SharedRunData.LowestHasteStacks
             GuiControl, ICScriptHub:, BossesHitThisRunID, % this.SharedRunData.BossesHitThisRun
             GuiControl, ICScriptHub:, TotalBossesHitID, % this.SharedRunData.TotalBossesHit

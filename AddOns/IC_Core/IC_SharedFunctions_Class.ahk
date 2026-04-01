@@ -1248,7 +1248,10 @@ class IC_SharedFunctions_Class extends SH_SharedFunctions
     {
         this.SetUserCredentials()
         previousPatron := g_ServerCall.activePatronID != "" ? g_ServerCall.activePatronID : 0 
-        g_ServerCall := new IC_ServerCalls_Class( this.UserID, this.UserHash, this.InstanceID ) ; Note: resets patronID to 0
+        if (g_ServerCall == "")
+            g_ServerCall := new IC_ServerCalls_Class(this.UserID, this.UserHash, this.InstanceID)
+        else
+            g_ServerCall.BlankSlate(this.UserID, this.UserHash, this.InstanceID)
         version := this.Memory.ReadBaseGameVersion()
         if(version != "")
             g_ServerCall.clientVersion := version

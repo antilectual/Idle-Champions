@@ -45,7 +45,7 @@ class IC_BrivSharedFunctions_Class
             g_SharedData.LoopString := "ServerCall: Restarting adventure (no manual stack conv.)"
         ; Restart adventure
         if (!IsObject(jsonObj["Calls"]))
-			jsonObj["Calls"] := []
+            jsonObj["Calls"] := []
         jsonObj["Calls"].Push({"CallCheckClaimable" : [CDP_key]})
         jsonObj["Calls"] := [{"CallEndAdventure" : []}, {"CallLoadAdventure" : [this.CurrentAdventure]}]
         jsonObj["ServerCallGUID"] := ComObjCreate("Scriptlet.TypeLib").GUID
@@ -80,7 +80,10 @@ class IC_BrivSharedFunctions_Class
     ResetServerCall()
     {
         jsonObj := this.SetUserCredentials()
-        g_ServerCall := new IC_BrivServerCall_Class( this.UserID, this.UserHash, this.InstanceID )
+        if (g_ServerCall == "")
+            g_ServerCall := new IC_BrivServerCall_Class(this.UserID, this.UserHash, this.InstanceID)
+        else
+            g_ServerCall.BlankSlate(this.UserID, this.UserHash, this.InstanceID)
         version := this.Memory.ReadBaseGameVersion()
         if (version != "")
             jsonObj.clientVersion := g_ServerCall.clientVersion := version
@@ -115,7 +118,11 @@ class IC_BrivSharedFunctions_Class
         this.SetUserCredentials()
         if (this.sprint != "" AND this.steelbones != "" AND (this.sprint + this.steelbones) < 190000)
             response := g_serverCall.CallPreventStackFail( this.sprint + this.steelbones, true)
-        g_ScriptHubComs.RunTimersOnModronResetStart()
+        try {
+            g_ScriptHubComs.RunTimersOnModronResetStart()
+        } catch {
+            ; Do nothing.
+        }
         while (this.Memory.ReadResetting() AND ElapsedTime < timeout)
         {
             ElapsedTime := A_TickCount - StartTime

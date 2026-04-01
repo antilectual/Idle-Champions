@@ -21,30 +21,52 @@ class IC_ServerCalls_Class extends SH_ServerCalls
     userHash := ""
     instanceID := 0
     networkID := 11
-    clientVersion := 999
+    clientVersion := 9999
     activeModronID := 1
     userDetails := ""
     activePatronID := 0
     dummyData := ""
-    webRoot := "http://ps22.idlechampions.com/~idledragons/"
+    webRoot := ""
     timeoutVal := 60000
-    playServerExcludes := "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16"
+    playServerExcludes := "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,26"
     settings := ""
+    initMaxRetries := 2
+    playServerRegex := "^https?://ps\d+\.idlechampions.com/~idledragons/"
     
-
-    __New( userID := 0, userHash := 0, instanceID := 0 )
+    __New( userID := 0, userHash := 0, instanceID := 0)
+    {
+        this.BlankSlate(userID, userHash, instanceID)
+        ; Step 1: Try memory read.
+        this.webRoot := g_SF.Memory.ReadWebRoot()
+        if (RegExMatch(this.webRoot, this.playServerRegex))
+            return this
+        ; Step 2: Try asking master.
+        this.webRoot := "http://master.idlechampions.com/~idledragons/"
+        response := this.CallGetPlayServer()
+        if (RegExMatch(response.play_server, this.playServerRegex))
+        {
+            this.webRoot := response.play_server
+            return this
+        }
+        ; Step 3: RNG
+        currentPlayServers := [27,28,29,30]
+        Random, psIndex , 1, currentPlayServers.Count()
+        this.webRoot := "http://ps" . currentPlayServers[psIndex] . ".idlechampions.com/~idledragons/"
+        return this
+    }
+    
+    BlankSlate(userID := 0, userHash := 0, instanceID := 0)
     {
         this.userID := userID
         this.userHash := userHash
         this.instanceID := instanceID
         this.shinies := 0
         this.LoadSettings(A_LineFile . "\..\ServerCall_Settings.json")
-        return this
     }
 
     GetVersion()
     {
-        return "v2.4.6, 2025-11-11"
+        return "v2.4.7, 2026-04-01"
     }
 
     UpdateDummyData()
@@ -61,7 +83,7 @@ class IC_ServerCalls_Class extends SH_ServerCalls
     ;Various server call functions that should be pretty obvious.
     ;============================================================
     ;Except this one, it is used internally and shouldn't be called directly.
-    ServerCall( callName, parameters, timeout := "", retryNum := 0) 
+    ServerCall( callName, parameters := "", timeout := "", retryNum := 0) 
     {
         response := ""
         URLtoCall := this.webRoot . "post.php?call=" . callName . parameters
@@ -250,131 +272,23 @@ class IC_ServerCalls_Class extends SH_ServerCalls
     ; Get the loadbalanced Play Server
     CallGetPlayServer() 
     {
-        advParams := this.dummyData 
-        return this.ServerCall( "getPlayServerForDefinitions", advParams )
+        return this.ServerCall("getPlayServerForDefinitions")
     }
 
-    ; Iterate the possible play servers 
-    GetFastestPlayServer(numberOfTestsPerServer := 1)
-    {
-        oldTimeout := this.timeoutVal
-        oldWebRoot := this.webRoot
-        this.timeoutVal := 1000
-        newWebRoot := ""
-        highestPlayServerValue := 23
-        fastestProcessingTime := 10000
-        Loop, %highestPlayServerValue%
-        {
-            if A_Index in % this.playServerExcludes
-                continue
-            this.webRoot := "http://ps" . A_Index . ".idlechampions.com/~idledragons/"
-            response := this.CallGetPlayServer()
-            testCount := 1
-            if (response != "" and response.processing_time != "")
-            {
-                avgProcessingTime := totalProcessingTime := response.processing_time
-                loop, % (numberOfTestsPerServer - 1)
-                {
-                    response := this.CallGetPlayServer()
-                    if (response != "" and response.processing_time != "")
-                    {
-                        totalProcessingTime += response.processing_time
-                        ++testCount
-                    }
-                    avgProcessingTime := totalProcessingTime / testCount
-                }
-                OutputDebug, % "Average Processing Time for ps" . A_Index . " is: " . avgProcessingTime
-                if (avgProcessingTime < fastestProcessingTime)
-                {
-                    fastestProcessingTime := avgProcessingTime
-                    newWebRoot := this.webRoot
-                }
-            }
-            else
-                continue
-        }
-        this.webRoot := oldWebRoot
-        this.timeoutVal := oldTimeout
-        if (newWebRoot != "" AND fastestProcessingTime < 10000)
-            return newWebRoot
-        else
-            return oldWebRoot
-    }
-
-    ; Updates the play server used for server calls. If doPerforamnceTest is true, will test all playservers to find the one that appears to be processing fastest.
-    UpdatePlayServer(doPerformanceTest := False, doPerformanceTestOnFail := False, numberOfTestsPerServer := 1)
+    ; Updates the play server used for server calls.
+    UpdatePlayServer()
     {
         OutputDebug, % "Old web root is: " . this.webRoot
-        if(doPerformanceTest)
-        {
-            this.webRoot := this.GetFastestPlayServer(numberOfTestsPerServer)
-        }
+        oldWebRoot := this.webRoot
+        this.webRoot := "http://master.idlechampions.com/~idledragons/"
+        response := this.CallGetPlayServer()
+        if (response != "" AND response.play_server != "")
+            this.webRoot := response.play_server
         else
-        {
-            oldWebRoot := this.webRoot
-            this.webRoot := "http://ps23.idlechampions.com/~idledragons/" ; assume ps23 will always be available (avoiding using master)
-            response := this.CallGetPlayServer()
-            if (response != "" AND response.play_server != "")
-                this.webRoot := response.play_server
-            else if (doPerformanceTestOnFail)
-                this.webRoot := this.GetFastestPlayServer(numberOfTestsPerServer)
-            else
-                this.webRoot := oldWebRoot
-        }
+            this.webRoot := oldWebRoot
         OutputDebug, % "New web root is: " . this.webRoot
         response := this.CallGetPlayServer()
-        suggestedServer := "unknown"
-        if (response != "" AND response.play_server != "")
-            suggestedServer := response.play_server
-        OutputDebug, % "Server Suggested web root is: " . suggestedServer
     }
     
     #include *i %A_LineFile%\..\IC_ServerCalls_Class_Extra.ahk
-}
-
-class Byteglow_ServerCalls_Class extends SH_ServerCalls
-{
-    webRoot := "https://ic.byteglow.com/api/"
-    timeoutVal := 60000
-    ServerCall( callName, parameters, timeout := "" ) 
-    {
-
-        response := ""
-        URLtoCall := this.webRoot . callName . "?" . parameters
-        timeout := timeout ? timeout : this.timeoutVal
-        WR := ComObjCreate( "WinHttp.WinHttpRequest.5.1" )
-        WR.SetTimeouts( 0, 45000, 30000, timeout )
-        if (this.proxy != "")
-            WR.SetProxy(2, this.proxy)
-        Try {
-            WR.Open( "POST", URLtoCall, true )
-            WR.SetRequestHeader( "Content-Type","application/x-www-form-urlencoded" )
-            WR.Send()
-            WR.WaitForResponse( -1 )
-            data := WR.ResponseText
-            Try
-            {
-                response := JSON.parse(data)
-            }
-            ;catch "Failed to fetch valid JSON response from server."
-        }
-        catch exception {
-			return exception
-		}
-        return response
-    }
-
-    ; https://ic.byteglow.com/api/briv-stacks?gild=2&enchant=60009&rarity=4&metalborn=1&target=2000
-    ; https://ic.byteglow.com/api/briv-stacks?skips=11&metalborn=1&target=2000
-    CallBrivStacks(gild, ilvls, rarity, isMetalborn, modronReset) 
-    {
-        params := "gild=" . gild . "&enchant=" . ilvls . "&rarity=" . rarity . "&metalborn=" . isMetalborn . "&target=" . modronReset
-        return this.ServerCall( "briv-stacks", params)
-    }    
-    
-    __New()
-    {
-        this.LoadSettings()
-        return this
-    }
 }
